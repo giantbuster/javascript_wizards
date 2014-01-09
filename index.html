@@ -1,0 +1,49 @@
+<!doctype html>
+<!--
+    Jefferson Lam
+    1-9-14
+    Wizard Callbacks
+
+    Assignment:
+        1. Modify the wizard's cast_spell() function so that when it is invoked, it should decrease the mana of the wizard based on the mana cost of the 
+        spell casted. 
+        2. Create a function to be passed to the wizard.cast_spell()
+        3. Create a success rate of 80% for all spells. If the spell is casted successfully (with respect to the success rate), have it do the functions described in STEP 2 and STEP 3
+        
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction to Callbacks</title>
+    <script>
+        // declare the wizard
+        var wizard = {
+            // wizard attributes:
+            health: 500,
+            mana: 500,
+            // wizard spells:
+            spells: {
+                open_sesame: {mana_cost: 10},
+                chain_lightning: {mana_cost: 20},
+                fireball: {mana_cost: 30}
+            },
+
+            // wizard abilities
+            cast_spell: function(spell, callback) {
+                if (Math.floor((Math.random()*10)+1) <=8){
+                    this.mana -= spell.mana_cost;
+                    callback(this.mana);
+                } else {
+                    alert("Failed to cast spell");
+                }
+            },
+
+            display_info: function(mana){
+                alert("Spell casted! The wizards current mana pool is " + mana);
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
